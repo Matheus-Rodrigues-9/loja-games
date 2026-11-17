@@ -1,0 +1,19 @@
+.DS_Store
+Thumbs.db
+.env
+*.log
+/vendor/
+node_modules/
+.idea/
+.vscode/
+
+
+# Arquivos de backup
+*.zip
+*.bak
+*_backup.sql
+Backup_*.sql
+
+# Arquivos de ambiente
+.env.*
+!.env.example
