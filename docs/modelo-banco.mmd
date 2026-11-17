@@ -1,0 +1,6 @@
+erDiagram
+    USUARIOS ||--o| CLIENTES : possui
+    USUARIOS ||--o{ PEDIDOS : realiza
+    CATEGORIAS ||--o{ GAMES : classifica
+    PEDIDOS ||--|{ ITENS_PEDIDO : contem
+    GAMES ||--o{ ITENS_PEDIDO : aparece_em

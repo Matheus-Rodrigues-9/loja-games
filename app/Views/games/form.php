@@ -1,0 +1,10 @@
+<?php $editando = $game !== null; $action = $editando ? 'atualizar' : 'salvar'; ?>
+<section class="panel"><form method="post" enctype="multipart/form-data" action="index.php?entidade=games&acao=<?= $action ?><?= $editando ? '&id='.(int)$game['id'] : '' ?>" class="checkout-form">
+<input type="hidden" name="csrf_token" value="<?= e(csrfToken()) ?>">
+<div class="field"><label for="titulo">Título</label><input id="titulo" name="titulo" maxlength="150" required value="<?= e($game['titulo']??'') ?>"></div>
+<div class="field"><label for="descricao">Descrição</label><textarea id="descricao" name="descricao" rows="4" required><?= e($game['descricao']??'') ?></textarea></div>
+<div class="checkout-form-row"><div class="field"><label for="preco">Preço (R$)</label><input id="preco" name="preco" type="number" min="0" step="0.01" required value="<?= e($game['preco']??'') ?>"></div><div class="field"><label for="estoque">Estoque</label><input id="estoque" name="estoque" type="number" min="0" step="1" required value="<?= e($game['estoque']??'0') ?>"></div></div>
+<div class="field"><label for="categoria_id">Categoria</label><select id="categoria_id" name="categoria_id" required><option value="">Selecione</option><?php foreach ($categorias as $cat): ?><option value="<?= (int)$cat['id'] ?>" <?= (int)($game['categoria_id']??0)===(int)$cat['id']?'selected':'' ?>><?= e($cat['nome']) ?></option><?php endforeach; ?></select><?php if (!$categorias): ?><small>Cadastre uma categoria antes de cadastrar o jogo.</small><?php endif; ?></div>
+<div class="field"><label for="imagem">Capa do jogo (opcional, JPG/PNG/WEBP/GIF até 3 MB)</label><input id="imagem" name="imagem" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><?php if (!empty($game['imagem'])): ?><small>Imagem atual: <?= e($game['imagem']) ?></small><?php endif; ?></div>
+<div class="quick-actions"><button class="btn btn-primary" type="submit" <?= !$categorias?'disabled':'' ?>>Salvar jogo</button><a class="btn btn-secondary" href="index.php?entidade=games">Cancelar</a></div>
+</form></section>

@@ -1,0 +1,15 @@
+classDiagram
+    Usuario "1" -- "0..1" Cliente : possui perfil
+    UsuarioController --> Usuario
+    ClienteController --> Cliente
+    GameController --> Game
+    GameController --> Categoria
+    CategoriaController --> Categoria
+    PedidoController --> Pedido
+    PedidoController --> Cliente
+    PedidoController --> Game
+    class Usuario { +listar() +buscar() +criar() +atualizar() +excluir() }
+    class Cliente { +listar() +buscar() +criar() +atualizar() +excluir() }
+    class Game { +listar() +buscar() +criar() +atualizar() +excluir() }
+    class Categoria { +listar() +buscar() +criar() +atualizar() +excluir() }
+    class Pedido { +listar() +buscar() +criar() +atualizarStatus() +excluir() }
